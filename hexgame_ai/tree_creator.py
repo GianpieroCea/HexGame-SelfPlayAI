@@ -6,10 +6,6 @@ import copy
 class NodeTree:
     def expand_tree_rec(board: Board,
                         action: tuple[int, int], depth: int):
-        # print("-------------------recursion-------------------\n")
-        # print(f"board:\n {board}"
-        #       f"action: {action}\n"
-        #       f"depth: {depth}\n")
         if action:
             current_color = Color.Red if depth % 2 == 1 else Color.Blue
             board.place_stone(
@@ -19,7 +15,6 @@ class NodeTree:
                 # print(f"player {current_color} has won\n")
                 return {"data": action, "children": []}
         possible_actions = board.empty_positions
-        # print(f"possible actions:{possible_actions}\n")
         children = []
         for a in possible_actions:
             next_board = copy.deepcopy(board)
