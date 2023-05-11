@@ -1,4 +1,4 @@
-from hexgame_ai.tree_creator import NodeTree
+from hexgame_ai.tree_creator import NodeTree,expand_tree_rec
 from hexgame.unionfind import UnionFind
 from hexgame.board import Board
 
@@ -13,5 +13,7 @@ class TestNodeTree:
         uf_blue = UnionFind(nodes)
         board = Board(dim_x=dim_x, dim_y=dim_y,
                       red_conn_comp=uf_red, blue_conn_comp=uf_blue)
-        tree = NodeTree.expand_tree_rec(board, None, 0)
-        assert len(tree["children"]) == 4
+        tree = expand_tree_rec(board, None, 0)
+        assert len(tree.children) == 4
+
+        
